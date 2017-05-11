@@ -41,20 +41,20 @@ class Phofile_model extends ACWModel
 			$name = $item['name'];
 			$size = $item['size'];
 			$file_tmp = $item['tmp_name'];			
-			$folder_name = "tmp/product/".date('Ym');
-			if(is_dir($folder_name)==false){
+			$folder_name = date('Ym');
+			if(is_dir(DATA_TMP_PATH.'/'.$folder_name)==false){
 				 @mkdir($folder_name, 0777, true);
 			}
 			$folder_name .='/'. date('d');
-			if(is_dir($folder_name)==false){
+			if(is_dir(DATA_TMP_PATH.'/'.$folder_name)==false){
 				 @mkdir($folder_name, 0777, true);
 			}
 			$img_name = uniqid().'.'.$file_lb->GetExtensionName($name);
 			$file_name =$folder_name.'/'. $img_name;
-			$file_lb->CopyFile($file_tmp,ACW_ROOT_DIR.'/'.$file_name);
-			$img_thumb = self::thumb_image($img_name,IMG_THUMB_SIZE_WIDTH,IMG_THUMB_SIZE_HEIGHT,$folder_name.'/');
+			$file_lb->CopyFile($file_tmp,DATA_TMP_PATH.'/'.$file_name);
+			$img_thumb = self::thumb_image($img_name,IMG_THUMB_SIZE_WIDTH,IMG_THUMB_SIZE_HEIGHT,DATA_TMP_PATH.'/'.$folder_name.'/');
 			$file_lb->DeleteFile($file_tmp);
-			$result['link'][] = str_replace($img_name,$img_thumb,ACW_BASE_URL.$file_name);
+			$result['link'][] = str_replace($img_name,$img_thumb,ACW_BASE_URL_DATA_TMP.$file_name);
 		}
 		
 		return ACWView::json($result);

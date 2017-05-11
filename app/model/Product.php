@@ -23,7 +23,7 @@ class Product_model extends ACWModel
 				p.pro_name,
 				p.price_new,
 				p.price_old,
-				(case when p.status = 1 then 'còn hàng' else 'hết hàng' end) status,
+				(case when p.status = 0 then 'còn hàng' else 'hết hàng' end) status,
 				(case when p.disp_home= 1 then 'hiện' else 'không' end) disp_home,
 				c.ctg_name,
 				p.del_flg
@@ -130,7 +130,7 @@ class Product_model extends ACWModel
 		$param['pro_id'] = $pro_id;
 		$file_lb = new FilePHPDebug_lib();
 		foreach($img_list as $key => $item){			
-			$param['img_thumb'] = "data".str_replace(ACW_BASE_URL."tmp","",$item) ;
+			$param['img_thumb'] = str_replace(ACW_BASE_URL_DATA_TMP,"",$item) ;
 			$param['img_path'] = str_replace("_thumb","",$param['img_thumb']) ;
 			$param['avata_flg']	= 0;
 			if($avata_key == $key){
@@ -138,18 +138,19 @@ class Product_model extends ACWModel
 			}		
 			$this->execute($sql,$param);
 			$info = explode("/",$param['img_path']);
-			$img_folder = ACW_ROOT_DIR.'data/product/'.$info[2];
+			ACWLog::debug_var('tesx',$info);
+			$img_folder = DATA_MAIN_PATH.'/'.$info[0];
 			if(is_dir($img_folder)==false){
 				 @mkdir($img_folder, 0777, true);
 			}
-			$img_folder .="/".$info[3];
+			$img_folder .="/".$info[1];
 			if(is_dir($img_folder)==false){
 				 @mkdir($img_folder, 0777, true);
 			}
-			$img_des = ACW_ROOT_DIR.'/'.$param['img_path'];
-			$img_src = str_replace('data','tmp',$img_des);
-			$img_des_thumb = ACW_ROOT_DIR.'/'.$param['img_thumb'];
-			$img_src_thumb = str_replace('data','tmp',$img_des_thumb);
+			$img_des = DATA_MAIN_PATH.'/'.$param['img_path'];
+			$img_src = DATA_TMP_PATH.'/'.$param['img_path'];
+			$img_des_thumb = DATA_MAIN_PATH.'/'.$param['img_thumb'];
+			$img_src_thumb =DATA_TMP_PATH.'/'.$param['img_thumb'];
 			$file_lb->CopyFile($img_src,$img_des);
 			$file_lb->CopyFile($img_src_thumb,$img_des_thumb);
 			$file_lb->DeleteFile($img_src);
@@ -162,8 +163,10 @@ class Product_model extends ACWModel
 		foreach($img_list as $item){
 			$img_path = str_replace(ACW_BASE_URL,"",$item);
 			$this->execute($sql,array('img_thumb'=>$img_path));
-			$file_lb->DeleteFile(ACW_ROOT_DIR.'/'.$img_path);
-			$file_lb->DeleteFile(ACW_ROOT_DIR.'/'.str_replace("_thumb","",$img_path));
+			if(strlen($img_path) > 0){
+				$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.$img_path);
+				$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.str_replace("_thumb","",$img_path));
+			}			
 		}
 	}
 	public function reset_img_bypro($pro_id){
@@ -354,8 +357,12 @@ class Product_model extends ACWModel
 			$model->delete($param['acw_url'][0]);			
 			$file_lb = new FilePHPDebug_lib();
 			foreach($img_list as $item){
-				$file_lb->DeleteFile(ACW_ROOT_DIR.'/'.$item['img_path']);
-				$file_lb->DeleteFile(ACW_ROOT_DIR.'/'.$item['img_thumb']);
+				if(strlen($item['img_path']) > 0){
+					$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.$item['img_path']);
+				}
+				if(strlen($item['img_thumb']) > 0){
+					$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.$item['img_thumb']);
+				}
 			}			
 		}
 		

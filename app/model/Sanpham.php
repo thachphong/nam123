@@ -16,38 +16,18 @@ class Sanpham_model extends ACWModel
 			'search_user_name'=>$param['search_user_name']
 		));
 	}
-	public function get_sanpham_byctgno($ctg_no,$limit = 1){
-		$sql="select p.pro_name,					
-					  p.pro_no,					  
-					  p.hieu_xe ,
-					  p.doi_xe,
-					  p.mau_xe ,
-					  p.kieu_xe ,
-					  p.giathue_ngay,
-					  p.giathue_thang,
-					  p.xedi_noithanh,
-					  p.phutroi_ngoaigio,
-					  p.phutroi_quakm,
-					  p.songay_sudung,
-					  p.sudung_cuoituan,
-					  p.sudung_le,
-					  p.img_path
+	public function get_sanpham_byhome($limit = 1){
+		$sql="select p.pro_no,p.pro_name,im.img_thumb,p.price_new,p.price_old
 				from product p
-				INNER JOIN category c on c.ctg_id = p.ctg_id and c.del_flg= 0
-				where p.del_flg = 0
-				and c.ctg_id in ((select ctg_id from category where ctg_no = :ctg_no
-				union 
-				select ctg_id from category where parent_id = 
-				( select ctg_id from category where ctg_no = :ctg_no
-				)
-				))
+				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1
+				where p.disp_home = 1
 				limit $limit
 				";
-		return $this->query($sql,array('ctg_no'=>$ctg_no));
+		return $this->query($sql);
 	}
-	public static function get_sanpham_byctg($ctg_no){
+	public static function get_sanpham_home(){
 		$db= new Sanpham_model();
-		return $db->get_sanpham_byctgno($ctg_no,4);
+		return $db->get_sanpham_byhome(8);
 	}
 	public static function action_v()
 	{
@@ -106,4 +86,5 @@ class Sanpham_model extends ACWModel
 		$res = $this->query($sql ,array('pro_no'=>$pro_no));		
 		return $res;
 	}
+	
 }

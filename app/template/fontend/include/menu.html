@@ -1,0 +1,121 @@
+<div id="header" data-section-id="header" data-section-type="header-section">
+   <div class="header_bot  enabled-sticky-menu sticky">
+      <div class="header_content">
+         <div class="container">
+            <div id="nav">
+               <nav class="navbar" role="navigation">
+                  <div class="navbar-header">
+                     <a href="#" class="visible-ms visible-xs pull-right navbar-cart" id="wsnavtoggle">
+                        <div class="cart-icon"><i class="fa fa-bars"></i></div>
+                     </a>
+                     <a href="javascript:void(0);" data-href="/cart" class="visible-ms visible-xs pull-right navbar-cart cart-popup">
+                        <div class="cart-icon"><span class="count hidden">0</span><i class="fa fa-shopping-cart"></i></div>
+                     </a>
+                     <a href="/search" class="visible-ms visible-xs pull-right navbar-cart">
+                        <div class="cart-icon"><i class="fa fa-search"></i></div>
+                     </a>
+                     <div class="visible-ms visible-xs">
+                        <a class="navbar-brand" href="/" itemprop="url">
+                        <img src="//cdn.shopify.com/s/files/1/0787/9973/files/logo_550x.png?v=1487270357" alt="FurnishTime" itemprop="logo">
+                        </a>
+                     </div>
+                     <!-- ./visible-ms visible-xs -->
+                     <a class="navbar-brand" href="https://cooktime.myshopify.com/" itemprop="url">
+                     <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
+                     </a>
+                  </div>
+                  <!-- code here -->
+                  <%assign var='menus' value=Menu_model::get_menus()%>
+                  <nav class="wsmenu clearfix multi-drop">
+                     <ul class="mobile-sub wsmenu-list">
+                     <%foreach $menus as $key=>$item%>                        
+                        <%if $item.child_flg > 0%>
+                        <li class="has-submenu">
+                           <span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%>"><%$item.menu_name%><span class="arrow"></span></a>
+                           <ul class="wsmenu-submenu">
+                           <%foreach $item.child as $sub1%>
+                           	  <%if $sub1.child_flg > 0%>	
+                              <li class="has-submenu-sub">
+                                 <span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%>"><%$sub1.menu_name%><span class="left-arrow"></span></a>
+                                 <ul class="wsmenu-submenu-sub">
+                                 <%foreach $sub1.child as $sub2%>                                    
+                                    <li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub2.page_flg==1%>page/v/<%$sub2.link%><%else if $sub2.page_flg==2%>danhmuc/ds/<%$sub2.link%><%else if $sub2.page_flg==3%>tintuc/ds/<%$sub2.link%><%/if%>"><%$sub2.menu_name%></a></li>
+                                 <%/foreach%>
+                                 </ul>
+                              </li>
+                              <%else%>
+                              <li class=""><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%>"><%$sub1.menu_name%></a></li>
+                              <%/if%>
+                              
+                           <%/foreach%> 
+                           </ul>
+                        </li>
+                        <%else%>
+                        	<li><a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%>"><%$item.menu_name%></a></li>
+                        <%/if%>
+                        
+                     <%/foreach%> 
+                     </ul>
+                      
+                  </nav>
+                  <ul class="hidden-xs nav navbar-nav navbar-right">
+                     <li class="dropdown-grid no-open-arrow">
+                        <a data-toggle="dropdown" href="javascript:void(0);" data-href="/cart" class="dropdown-toggle cart-popup" aria-expanded="true">
+                           <div class="cart-icon"><span class="count hidden">0</span><i class="fa fa-shopping-cart"></i></div>
+                        </a>
+                        <div class="dropdown-grid-wrapper hidden">
+                           <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-9 col-md-7 animation-done" role="menu">
+                              <div class="menu_c cart_menu">
+                                 <div class="menu_title clearfix">
+                                    <h4>Shopping Cart</h4>
+                                 </div>
+                                 <div class="cart_row">
+                                    <div class="empty-cart">Your cart is currently empty.</div>
+                                    <p><a href="javascript:void(0)" class="btn_c btn_close">Continue Shopping</a></p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="dropdown-grid no-open-arrow">
+                        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><span class="icons"><i class="fa fa-user"></i></span></a>
+                        <div class="dropdown-grid-wrapper">
+                           <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-5 col-md-4 col-lg-3 animation-done" role="menu">
+                              <div class="menu_c acc_menu">
+                                 <div class="menu_title clearfix">
+                                    <h4>My Account</h4>
+                                 </div>
+                                 <div class="login_frm">
+                                    <p class="text-center">Welcome to FurnishTime!</p>
+                                    <div class="remember">
+                                       <a href="/account/login" class="signin_btn btn_c">Login</a>
+                                       <a href="/account/register" class="signin_btn btn_c">Create Account</a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="dropdown-grid no-open-arrow">
+                        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
+                        <div class="dropdown-grid-wrapper" role="menu">
+                           <div class="dropdown-menu fixed_menu col-sm-4 col-lg-3 animated fadeInDown pl-pr-15 animation-done">
+                              <form action="/search" method="get" role="search">
+                                 <div class="menu_c search_menu">
+                                    <div class="search_box">
+                                       <input type="hidden" name="type" value="product">
+                                       <input type="search" name="q" value="" class="txtbox" placeholder="Search" aria-label="Search">
+                                       <button class="btn btn-link" type="submit" value="Search"><span class="fa fa-search"></span></button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

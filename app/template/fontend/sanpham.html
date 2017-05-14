@@ -12,11 +12,11 @@
       
       <meta property="og:type" content="website">
       <meta property="og:title" content="ShowTime Premium Shopify Theme - CookTime Demo Shop">
-      <meta property="og:url" content="https://cooktime.myshopify.com/">
+      <meta property="og:url" content="<%$smarty.const.ACW_BASE_URL%>">
       <meta property="og:site_name" content="CookTime">
       <meta name="twitter:site" content="@shopify">
       <meta name="twitter:card" content="summary">
-      <link rel="canonical" href="https://cooktime.myshopify.com/">
+      <link rel="canonical" href="<%$smarty.const.ACW_BASE_URL%>">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/6082877/digital_wallets/dialog">
       <meta name="theme-color" content="#37bbec">
@@ -47,6 +47,8 @@
       <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/jquery.currencies.min.js" type="text/javascript"></script>         
       <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/jquery.owl.min.js" type="text/javascript"></script>
       <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/scripts.js" type="text/javascript"></script>
+      <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/jquery.elevatezoom.js" type="text/javascript"></script>
+      
    </head>
    <body id="showtime-premium-shopify-theme-cooktime-demo-shop" class="template-index">
       <div class="wsmenucontainer clearfix">
@@ -200,13 +202,8 @@
                }
             </style>
          </div>
-         <div id="content">
-            <!-- BEGIN content_for_index -->
-            <%include 'include/slide.html'%>
-            <%include 'index/productlist.html'%>
-            <%include 'index/pagelist.html'%>
-            
-         </div>
+         <%include 'sanpham/content.html'%>
+         
          <%include 'include/footer.html'%>
          
       </div>

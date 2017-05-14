@@ -89,6 +89,7 @@
                         <tr>
                           <th>STT</th>
                           <th>Tên Trang</th>
+                          <th>Hiển ở trang chủ</th>
                           <th>Hiện</th>
                           <th>Sửa</th>
                           <th>Xóa</th>                        
@@ -99,6 +100,7 @@
                       	<tr>
                           <td><%$key+1%></td> 
                           <td id="name_<%$item.page_id%>"><%$item.page_name%></td>
+                          <td ><%$item.disp_home%></td>
                           <td>                          	
                           	<span class="fa <%if $item.del_flg == 1%>fa-square-o<%else%>fa-check-square<%/if%>" style="font-size: 16px;"></span>                          	
                           </td>

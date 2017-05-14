@@ -24,7 +24,9 @@
       <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/apps.css" rel="stylesheet" type="text/css" media="all">
       <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/style.css" rel="stylesheet" type="text/css" media="all">
       <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/flexslider.css" rel="stylesheet" type="text/css" media="all">
-      <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/flexslider-product.css" rel="stylesheet" type="text/css" media="all">      
+      <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/flexslider-product.css" rel="stylesheet" type="text/css" media="all">
+      <!--<link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">--> 
+      <link rel="stylesheet" href="<%$smarty.const.ACW_BASE_URL%>/froala/css/froala_style.css">       
       <script type="text/javascript" async="" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/spr.js"></script>    
       <script type="text/javascript" async="" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/trekkie.storefront.min.js"></script>     
       
@@ -200,13 +202,25 @@
                }
             </style>
          </div>
-         <div id="content">
-            <!-- BEGIN content_for_index -->
-            <%include 'include/slide.html'%>
-            <%include 'index/productlist.html'%>
-            <%include 'index/pagelist.html'%>
-            
-         </div>
+         <div id="shopify-section-collection" class="shopify-section">
+		   <div id="content">
+		      <div class="container" data-section-id="collection" data-section-type="collection-page-section">
+		         <!--<ol class="breadcrumb">
+		            <li><a href="/" title="Home">Home</a></li>
+		            <li>Products</li>
+		         </ol>-->
+		         <div class="catalog_c">
+		            <div class="title clearfix">
+		               <h1><%$page_name%></h1>
+		            </div>
+		            <div class="row">
+						<%include 'page/content.html'%>
+						<%include 'include/left.html'%>		
+					</div>
+			         </div>
+			      </div>
+			   </div>
+			</div>
          <%include 'include/footer.html'%>
          
       </div>

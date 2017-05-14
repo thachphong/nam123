@@ -19,7 +19,14 @@ class Page_model extends ACWModel
 		));
 	}
 	public function get_page_all(){
-		$sql="select * from page
+		$sql="select page_id,
+				  page_no,
+				  page_name,				 
+				  content,
+				  del_flg,				
+				  img_path,
+				(case when disp_home= 1 then 'hiện' else 'không' end) disp_home
+				from page
 				";
 		return $this->query($sql);
 	}
@@ -31,6 +38,7 @@ class Page_model extends ACWModel
 		$param['page_no'] = null;
 		$param['page_name'] = "";
 		$param['img_path'] = NULL;
+		$param['disp_home'] = NULL;
 		$param['des'] = "";
 		$param['content'] = "";
 		$param['del_flg'] = "";		
@@ -46,7 +54,9 @@ class Page_model extends ACWModel
 			  'add_user',
 			  'upd_date',
 			  'upd_user',			 
-			  'del_flg'
+			  'del_flg',
+			  'img_path',
+			  'disp_home'
 			));
 		
 		$result = array('status' => 'OK');
@@ -93,6 +103,8 @@ class Page_model extends ACWModel
 				$res = $this->query($sql, array ('page_no' => $param['page_no'] , 'page_id'=>$param['page_id']));
 			}
 		}
+		/*if(strlen($param['img_path']) > 0){
+		}*/
 		return "";
 	}
 	private function insert($param){
@@ -110,7 +122,9 @@ class Page_model extends ACWModel
 					  add_user,
 					  upd_date,
 					  upd_user,					 
-					  del_flg
+					  del_flg,
+					  img_path,
+					  disp_home
 					)
 				VALUES
 					(					  
@@ -121,7 +135,9 @@ class Page_model extends ACWModel
 					  :user_id,
 					  now(),
 					  :user_id,				 
-					  :del_flg
+					  :del_flg,
+					  :img_path,
+					  :disp_home
 					)
 				";
 		 
@@ -131,7 +147,9 @@ class Page_model extends ACWModel
 					  'content',					  
 					  'user_id',					 
 					  'del_flg',
-					  'content'
+					  'content',
+					  'img_path',
+					  'disp_home'
 					)));
 		$this->commit();
 		return TRUE;
@@ -148,7 +166,9 @@ class Page_model extends ACWModel
 					  content = :content,					 
 					  upd_date = now(),
 					  upd_user = :user_id,					 
-					  del_flg = :del_flg
+					  del_flg = :del_flg,
+					  disp_home= :disp_home,
+					  img_path = :img_path
 					where page_id = :page_id
 				";
 		
@@ -159,7 +179,9 @@ class Page_model extends ACWModel
 					  'content',					  
 					  'user_id',					 
 					  'del_flg',
-					  'content'
+					  'content',
+					  'img_path',
+					  'disp_home'
 					));
 		$this->execute($sql,$sql_par );			
 		
@@ -217,7 +239,9 @@ class Page_model extends ACWModel
 				  add_user,
 				  upd_date,
 				  upd_user,				  
-				  del_flg
+				  del_flg,
+				  disp_home,
+				  img_path
 			  from page where page_id = :page_id";
 		$res = $this->query($sql ,array('page_id'=>$page_id));
 		if(count($res)> 0){
@@ -236,8 +260,15 @@ class Page_model extends ACWModel
 		));
 		$model = new Page_model();
 		$rows = $model->get_page_byno($param['acw_url'][0]);		
-		return ACWView::template('page.html', array(
-			'page' => $rows			
-		),FALSE);
+		return ACWView::template('page.html',  $rows,FALSE);
 	}
+	public static function get_page_home(){
+		$db = new Page_model();
+		return $db->get_page_list_home(3);
+	}
+	public function get_page_list_home($limit){
+		$sql="select page_no,page_name,img_path from page where del_flg= 0 and disp_home = 1 limit $limit";
+		return $this->query($sql);
+	}
+	
 }

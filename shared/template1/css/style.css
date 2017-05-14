@@ -43,7 +43,8 @@ html { overflow-y: auto; }
 body {
   margin:0;
   padding:0;
-  font-family: Lato, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: Lato, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: Tahoma ,"Times New Roman",Arial, sans-serif;
   font-weight:400;
   color: #898989;
 }
@@ -3083,7 +3084,7 @@ Cart
   border-right:none;
   border-radius:13px 0px 0px 13px;
   display:block;
-  background:url(minus.png) no-repeat center center;
+  background:url(../images/minus.png) no-repeat center center;
   float:left;
   cursor: pointer;
 }
@@ -3106,7 +3107,7 @@ Cart
   text-align:center;
   border-radius:0px 13px 13px 0;
   display:block;
-  background:url(plus.png) no-repeat center center;
+  background:url(../images/plus.png) no-repeat center center;
   float:left;
   border-left:none;
   cursor: pointer;
@@ -3542,7 +3543,7 @@ Collection / Product
   text-align: center;
   border-radius: 0px 13px 13px 0;
   display: block;
-  background: url(plus.png) no-repeat center center;
+  background: url(../images/plus.png) no-repeat center center;
   float: left;
   border-left: none;
   cursor: pointer;
@@ -3554,7 +3555,7 @@ Collection / Product
   border-right: none;
   border-radius: 13px 0px 0px 13px;
   display: block;
-  background: url(minus.png) no-repeat center center;
+  background: url(../images/minus.png) no-repeat center center;
   float: left;
   cursor: pointer;
 }
@@ -5782,7 +5783,7 @@ img.mfp-img {
   border-right:none;
   border-radius:13px 0px 0px 13px;
   display:block;
-  background:url(minus.png) no-repeat center center;
+  background:url(../images/minus.png) no-repeat center center;
   float:left;
   cursor: pointer;
 }
@@ -5805,7 +5806,7 @@ img.mfp-img {
   text-align:center;
   border-radius:0px 13px 13px 0;
   display:block;
-  background:url(plus.png) no-repeat center center;
+  background:url(../images/plus.png) no-repeat center center;
   float:left;
   border-left:none;
   cursor: pointer;

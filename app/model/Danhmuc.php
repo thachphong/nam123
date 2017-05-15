@@ -32,6 +32,26 @@ class Danhmuc_model extends ACWModel
 		$param['ctg_no'] = $param['acw_url'][0];
 		return ACWView::template('danhmuc.html', $param);
 	}
+	public static function action_tim()
+	{
+		$param = self::get_param(array('acw_url','page','txt'));	
+		/*if(self::get_validate_result() == false){
+			ACWError::add('acw_url', 'Tham số không hợp lệ !');
+		}*/
+		$db = new Danhmuc_model();
+		$start_row = 0;
+		if(isset($param['page']) && $param['page'] > 1){
+			$start_row = $param['page']*PAGE_LIMIT_RECORD;
+		}else{
+			$param['page'] = 1;
+		}
+		//$info = $db->get_danhmuc_info($param['acw_url'][0]);
+		$param['ctg_name'] = "Kết quả tìm";
+		$param['sanphams']=$db->search_sanpham($param['txt'],$start_row);
+		$param['total_page']= round($db->search_sanpham_total($param['txt'])/PAGE_LIMIT_RECORD);
+		$param['ctg_no'] = "tim";
+		return ACWView::template('danhmuc.html', $param);
+	}
 	public function get_sanpham_byctgno($ctg_no,$start_row=0){
 		$limit = PAGE_LIMIT_RECORD;
 		$sql="select p.pro_no,p.pro_name,im.img_thumb,p.price_new,p.price_old
@@ -77,4 +97,35 @@ class Danhmuc_model extends ACWModel
 		}
 		return NULL;
 	}
+	public function search_sanpham($search,$start_row=0){
+		$txt =str_replace('   ',' ', $search);
+		$txt =str_replace('  ',' ', $txt);
+		$txt ='%'. str_replace(' ','-', ACWModel::convert_vi_to_en($txt)). '%';
+		$limit = PAGE_LIMIT_RECORD;
+		$sql="select p.pro_no,p.pro_name,im.img_thumb,p.price_new,p.price_old
+				from product p
+				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1				
+				where p.pro_no like :txt
+				and p.del_flg = 0 
+				limit $limit
+				OFFSET $start_row
+				";
+		return $this->query($sql,array('txt'=>$txt));
+	}
+	public function search_sanpham_total($search){
+		$txt =str_replace('   ',' ', $search);
+		$txt =str_replace('  ',' ', $txt);
+		$txt ='%'. str_replace(' ','-', ACWModel::convert_vi_to_en($txt)) .'%';		
+		$sql="select count(p.pro_no) cnt
+				from product p
+				INNER JOIN product_img im on im.pro_id = p.pro_id and im.avata_flg = 1				
+				where p.pro_no like :txt
+				and p.del_flg = 0 			
+				";
+		$res = $this->query($sql,array('txt'=>$txt));
+		if(count($res) > 0){
+			return $res[0]['cnt'];
+		}
+		return 0;
+	}	
 }

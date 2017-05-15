@@ -30,7 +30,7 @@
                   <li>
                   	 <input type="hidden" name="pro_id[]" value="<%$item.pro_id%>">
                      <p class="mobile-label-quantity">Số lượng</p>
-                     <a class="minus_btn" onclick="qty_add(<%$item.pro_id%>,-1)"></a><input type="text" name="quantity[]" class="txtbox" min="0" id="qty_<%$item.pro_id%>" value="1"><a class="plus_btn" onclick="qty_add(<%$item.pro_id%>,1)"></a>
+                     <a class="minus_btn" onclick="qty_add(<%$item.pro_id%>,-1)"></a><input type="text" name="quantity[]" class="txtbox" min="0" id="qty_<%$item.pro_id%>" value="<%$item.qty%>"><a class="plus_btn" onclick="qty_add(<%$item.pro_id%>,1)"></a>
                      <div class="ajaxcart__errors text-center ajaxcart__item__795362367__errors">All available stock is in cart</div>
                   </li>
                   <li>

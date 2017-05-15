@@ -5,16 +5,7 @@ class Tintuc_model extends ACWModel
 		
 	public static function action_index()
 	{
-		$param = self::get_param(array(
-			'search_user_name'
-		));
-		$model = new Sanpham_model();
-		$rows = $model->get_sanpham_all($param);		
-		return ACWView::template_admin('sanpham.html', array(
-			'products' => $rows,
-			'lang_list'=>'',
-			'search_user_name'=>$param['search_user_name']
-		));
+		
 	}
 	public static function action_ds()
 	{
@@ -22,9 +13,12 @@ class Tintuc_model extends ACWModel
 			'acw_url'
 		));
 		$model = new Tintuc_model();
+		$info = $model->get_danhmuc_info($param['acw_url'][0]);
+		//$param['ctg_name'] = $info['ctg_name'];
 		$rows = $model->get_tintuc_byctgno($param['acw_url'][0],10);		
 		return ACWView::template('tintuclist.html', array(
-			'tintucs' => $rows		
+			'tintucs' => $rows,
+			'ctg_name' =>$info['ctg_name']		
 		));
 	}
 	public function get_tintuc_byctgno($ctg_no,$limit = 1){
@@ -75,5 +69,15 @@ class Tintuc_model extends ACWModel
 				limit 6";
 		$res = $this->query($sql ,array('pro_no'=>$pro_no));		
 		return $res;
+	}
+	public function get_danhmuc_info($ctg_no){
+		$sql ="select ctg_no,ctg_name from category 
+				where del_flg = 0 and ctg_no =:ctg_no
+				";
+		$res = $this->query($sql,array('ctg_no'=>$ctg_no));
+		if(count($res) > 0){
+			return $res[0];			
+		}
+		return NULL;
 	}
 }

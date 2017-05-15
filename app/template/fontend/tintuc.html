@@ -25,8 +25,8 @@
       <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/style.css" rel="stylesheet" type="text/css" media="all">
       <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/flexslider.css" rel="stylesheet" type="text/css" media="all">
       <link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/flexslider-product.css" rel="stylesheet" type="text/css" media="all">
-      <!--<link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">--> 
-      <!--<link rel="stylesheet" href="<%$smarty.const.ACW_BASE_URL%>/froala/css/froala_style.css">  -->     
+      <!--<link href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">-->        
+      <link rel="stylesheet" href="<%$smarty.const.ACW_BASE_URL%>/froala/css/froala_style.css">
       <script type="text/javascript" async="" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/spr.js"></script>    
       <script type="text/javascript" async="" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/trekkie.storefront.min.js"></script>     
       
@@ -42,7 +42,7 @@
       </script>
       <link rel="stylesheet" type="text/css" href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/css/spr.css" media="screen">
       <script type="text/javascript" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/jquery.min.js"></script>
-      <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+      <!--<script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/jquery.magnific-popup.min.js" type="text/javascript"></script>-->
       <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/api.jquery.js" type="text/javascript"></script>
       <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/ajaxify-shop.js" type="text/javascript"></script>
       <script src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/js/currencies.js" type="text/javascript"></script>
@@ -52,7 +52,7 @@
    </head>
    <body id="showtime-premium-shopify-theme-cooktime-demo-shop" class="template-index">
       <div class="wsmenucontainer clearfix">
-         <div class="overlapblackbg"></div>       
+         <div class="overlapblackbg"></div>
          <!-- Modal -->
          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="entry-popup">
@@ -211,13 +211,14 @@
 		         </ol>-->
 		         <div class="catalog_c">
 		            <div class="title clearfix">
-		               <h1>Giỏ hàng</h1>
+		               <h1><%*$ctg_name*%></h1>
 		            </div>
 		            <div class="row">
-						<%include 'cart/content.html'%>
-						<%include 'include/left.html'%>		
+						<%include 'tintuc/content.html'%>
+						<%include 'include/left.html'%>
+		<%*include 'danhmuc/freeformatter-out.html'*%>
 					</div>
-			         </div>
+			        </div>
 			      </div>
 			   </div>
 			</div>

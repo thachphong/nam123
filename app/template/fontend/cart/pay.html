@@ -22,6 +22,9 @@
     font-size: 14px;    
     font-weight: 400;
     }
+.req{
+	color:red;
+}
 </style>
 <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
    <div class="sfbox box-page animated rollIn animation-done" data-animation="rollIn">
@@ -29,11 +32,11 @@
 		   <div class="menu_title clearfix">
             <h4>Thông tin khách hàng</h4>
          </div>
-         <form action="<%$smarty.const.ACW_BASE_URL%>cart/update" method="post" novalidate="" id="pay_from">
+         <form action="<%$smarty.const.ACW_BASE_URL%>cart/update" method="post" id="pay_from">
          	<div class="col-sm-6">
                   
                   <div class="lbltxt">Họ và tên:<span class="req">*</span></div>
-                  <input type="text" id="contactFormName"  name="full_name" value="">
+                  <input type="text" id="contactFormName"  name="full_name" value="" required>
             </div>
             <div class="col-sm-6">                  
                   <div class="lbltxt">Email:</div>
@@ -42,12 +45,12 @@
             <div class="col-sm-6">
                   
                   <div class="lbltxt">Điện thoại:<span class="req">*</span></div>
-                  <input type="text" id="contactFormName"  name="phone" value="">
+                  <input type="text" id="contactFormName"  name="phone" value="" required>
             </div>
             <div class="col-sm-6">
                   
                   <div class="lbltxt">Địa chỉ:<span class="req">*</span></div>
-                  <input type="text" id="contactFormName"  name="address" value="">
+                  <input type="text" id="contactFormName"  name="address" value="" required>
             </div>
             
             <div class="col-sm-12">
@@ -59,7 +62,7 @@
             </div>
             <div class="col-sm-6">
             	<input type="hidden" name="total_amount" value="<%$total_amount%>">
-               <button type="submit" name="checkout" value="Check Out" class="btn_c" style="float: right">Đặt hàng</button>
+               <button type="submit" name="checkout" value="Check Out" class="btn_c" style="float: right" >Đặt hàng</button>
             </div>            
          </form> 
          	   
@@ -157,17 +160,17 @@ function qty_add(id,qty){
 	}
 	$("#qty_"+id).val(quantity);
 	var price = $('#price_'+id).text().replace(/\./g,'').replace(' VNĐ','');
-	console.log('--');
-	console.log(price);
+	//console.log('--');
+	//console.log(price);
 	var amt_old = $('#amount_'+id).text().replace(/\./g,'').replace(' VNĐ','');
 	var tot_old = $('#total_amount').text().replace(/\./g,'').replace(' VNĐ','');
-	console.log('amt_old:'+amt_old);
-	console.log('tot_old:'+tot_old);
+	//console.log('amt_old:'+amt_old);
+	//console.log('tot_old:'+tot_old);
 	var  amount = quantity*parseInt(price);
-	console.log('amount:'+amount);
+	//console.log('amount:'+amount);
 	$('#amount_'+id).text(currency_format(amount) + ' VNĐ');
 	var tot_new =parseInt(tot_old) + (amount - parseInt(amt_old));
-	console.log('tot_new:'+tot_new);
+	//console.log('tot_new:'+tot_new);
 	$('#total_amount').text(currency_format(tot_new) + ' VNĐ');
 }
 function currency_format(n) {

@@ -168,7 +168,8 @@
 	$(document).ready(function() {
 		$('#pro_content').froalaEditor({
 		theme: 'royal',
-		language: 'vi'
+		language: 'vi',
+		imageUploadURL:"<%$smarty.const.ACW_BASE_URL%>phofile/upload"
 	  });
 		        
         
@@ -229,7 +230,7 @@
         	//console.log(file_data);	
         	var form_data=new FormData(this);
             form_data.append("file",file_data);
-            var base_url= "<%$smarty.const.ACW_BASE_URL%>";
+            var base_url= "<%$smarty.const.ACW_BASE_URL_DATA%>";
             //console.log(form_data);	
         	Pho_upload("<%$smarty.const.ACW_BASE_URL%>phofile/upload" ,form_data,function(datas){
 				//if(datas.status =="OK"){

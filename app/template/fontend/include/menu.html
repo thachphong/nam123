@@ -1,3 +1,8 @@
+<style>
+	#header #nav .navbar-nav > li > a:hover{
+		color: #37bbec;
+	}
+</style>
 <div id="header" data-section-id="header" data-section-type="header-section">
    <div class="header_bot  enabled-sticky-menu sticky">
       <div class="header_content">
@@ -8,6 +13,8 @@
                      <a href="#" class="visible-ms visible-xs pull-right navbar-cart" id="wsnavtoggle">
                         <div class="cart-icon"><i class="fa fa-bars"></i></div>
                      </a>
+                     
+                     
                      <a href="javascript:void(0);" data-href="/cart" class="visible-ms visible-xs pull-right navbar-cart cart-popup">
                         <div class="cart-icon"><span class="count hidden">0</span><i class="fa fa-shopping-cart"></i></div>
                      </a>
@@ -60,10 +67,11 @@
                   </nav>
                   <ul class="hidden-xs nav navbar-nav navbar-right">
                      <li class="dropdown-grid no-open-arrow">
-                        <a data-toggle="dropdown" href="javascript:void(0);" data-href="/cart" class="dropdown-toggle cart-popup" aria-expanded="true">
-                           <div class="cart-icon"><span class="count hidden">0</span><i class="fa fa-shopping-cart"></i></div>
+                        <a  href="<%$smarty.const.ACW_BASE_URL%>cart" class="dropdown-toggle " >
+                        	<%assign var='carts' value=count(ACWSession::get("cart_info"))%>
+                           <div class="cart-icon"><span class="count <%if $carts==0%>hidden<%/if%>"><%$carts%></span><i class="fa fa-shopping-cart"></i></div>
                         </a>
-                        <div class="dropdown-grid-wrapper hidden">
+                        <!--<div class="dropdown-grid-wrapper hidden">
                            <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-9 col-md-7 animation-done" role="menu">
                               <div class="menu_c cart_menu">
                                  <div class="menu_title clearfix">
@@ -75,7 +83,7 @@
                                  </div>
                               </div>
                            </div>
-                        </div>
+                        </div>-->
                      </li>
                      <!--<li class="dropdown-grid no-open-arrow">
                         <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><span class="icons"><i class="fa fa-user"></i></span></a>
@@ -100,11 +108,11 @@
                         <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
                         <div class="dropdown-grid-wrapper" role="menu">
                            <div class="dropdown-menu fixed_menu col-sm-4 col-lg-3 animated fadeInDown pl-pr-15 animation-done">
-                              <form action="/search" method="get" role="search">
+                              <form action="<%$smarty.const.ACW_BASE_URL%>danhmuc/tim" method="get" role="search">
                                  <div class="menu_c search_menu">
                                     <div class="search_box">
                                        <input type="hidden" name="type" value="product">
-                                       <input type="search" name="q" value="" class="txtbox" placeholder="Search" aria-label="Search">
+                                       <input type="search" name="txt" value="" class="txtbox" placeholder="Search" aria-label="Search">
                                        <button class="btn btn-link" type="submit" value="Search"><span class="fa fa-search"></span></button>
                                     </div>
                                  </div>

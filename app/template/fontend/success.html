@@ -211,11 +211,23 @@
 		            <li>Products</li>
 		         </ol>-->
 		         <div class="catalog_c">
-		            <div class="title clearfix">
+		            <!--<div class="title clearfix">
 		               <h1>Giỏ hàng</h1>
-		            </div>
+		            </div>-->
 		            <div class="row">
-						<%include 'cart/pay.html'%>
+						<div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
+						   <div class="sfbox box-page animated rollIn animation-done" data-animation="rollIn">
+							  <div class="menu_c cart_menu">
+								 <div style="padding: 15px 25px;height: 400px;text-align: center;">
+								 	<br/>
+						            <h4>Đơn hàng của bạn đã đặt thành công !</h4>
+						            <br/><br/>	
+						            <p>Nhân viên chúng tôi sẽ nhanh chóng liên hệ và giao hàng cho bạn !</p>					            		<a class="btn_c" href="<%$smarty.const.ACW_BASE_URL%>">Tiếp tục mua hàng</a>
+						         </div>
+						         
+						      </div>
+						    </div>
+						</div>  
 						<%include 'include/left.html'%>		
 					</div>
 			         </div>

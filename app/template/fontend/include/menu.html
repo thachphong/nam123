@@ -27,7 +27,7 @@
                         </a>
                      </div>-->
                      <!-- ./visible-ms visible-xs -->
-                     <a class="navbar-brand" href="https://cooktime.myshopify.com/" itemprop="url">
+                     <a class="navbar-brand" href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
                      <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
                      </a>
                   </div>
@@ -38,7 +38,7 @@
                      <%foreach $menus as $key=>$item%>                        
                         <%if $item.child_flg > 0%>
                         <li class="has-submenu">
-                           <span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%>"><%$item.menu_name%><span class="arrow"></span></a>
+                           <span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%>"><%$item.menu_name%><span class="arrow"></span></a>
                            <ul class="wsmenu-submenu">
                            <%foreach $item.child as $sub1%>
                            	  <%if $sub1.child_flg > 0%>	

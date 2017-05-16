@@ -9,17 +9,7 @@
 	<%assign var='lang' value=Message_model::get_message('LOGIN')%>
     <title><%$lang['LOG006']%> </title>
 
-    <!-- Bootstrap -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/animate.css/animate.min.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/build/css/custom.min.css" rel="stylesheet">
+    <%include 'include/header.html'%>
     
   </head>
 

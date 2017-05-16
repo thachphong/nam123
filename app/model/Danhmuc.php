@@ -83,7 +83,7 @@ class Danhmuc_model extends ACWModel
 	}
 	public function get_danhmuc_all(){
 		$sql ="select ctg_no,ctg_name from category 
-				where del_flg = 0
+				where del_flg = 0 and news_flg =0
 				";
 		return $this->query($sql);
 	}

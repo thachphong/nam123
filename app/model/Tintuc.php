@@ -11,14 +11,27 @@ class Tintuc_model extends ACWModel
 	{
 		$param = self::get_param(array(
 			'acw_url'
+			,'page'
 		));
 		$model = new Tintuc_model();
 		$info = $model->get_danhmuc_info($param['acw_url'][0]);
 		//$param['ctg_name'] = $info['ctg_name'];
-		$rows = $model->get_tintuc_byctgno($param['acw_url'][0],10);		
+		$rows = $model->get_tintuc_byctgno($param['acw_url'][0],10);
+		
+		$db = new Danhmuc_model();
+		$start_row = 0;
+		if(isset($param['page']) && $param['page'] > 1){
+			$start_row = $param['page']*PAGE_NEWS_LIMIT_RECORD;
+		}else{
+			$param['page'] = 1;
+		}
+								
 		return ACWView::template('tintuclist.html', array(
-			'tintucs' => $rows,
-			'ctg_name' =>$info['ctg_name']		
+			'tintucs' => $rows
+			,'ctg_name' =>$info['ctg_name']
+			,'ctg_no' =>$info['ctg_no']		
+			,'total_page'=>3//round($db->get_total_rows($param['acw_url'][0])/PAGE_NEWS_LIMIT_RECORD)	
+			,'page'=>$param['page']
 		));
 	}
 	public function get_tintuc_byctgno($ctg_no,$limit = 1){

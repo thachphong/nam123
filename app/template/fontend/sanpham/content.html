@@ -23,12 +23,7 @@
                         <div id="image-block" data-zoom="true">
                            <div class="flexslider product_gallery product_images" id="product-342736279-gallery">
                               <img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$imglist[0]['img_path']%>" alt="<%$pro.pro_name%>"  class="featured_image" id="img_main_zoom">
-                              <ol class="flex-control-nav flex-control-thumbs">
-                                 <!--<li><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product20_0c1f801e-da05-4d2e-ac25-01e23f9551c1_800x.jpg?v=1408555398" class="flex-active" draggable="false" onclick="chang_img(this)"></li>
-                                 <li><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product17_d2fce78c-abe8-44a0-a3bc-348f0bf837bd_800x.jpg?v=1408555398" draggable="false" onclick="chang_img(this)"></li>
-                                 <li><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product18_60d79c97-92ad-464b-8b83-fddbe47f4218_800x.jpg?v=1408555398" draggable="false" onclick="chang_img(this)"></li>
-                                 <li><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product19_4885083d-0d62-4889-a9dc-efd5c873000b_800x.jpg?v=1408555398" draggable="false" onclick="chang_img(this)"></li>
-                                 <li><img src="//cdn.shopify.com/s/files/1/0608/2877/products/product21_05b52085-1217-4f0d-a9b6-3b26d1011132_800x.jpg?v=1408555398" draggable="false" onclick="chang_img(this)"></li>-->
+                              <ol class="flex-control-nav flex-control-thumbs">                                 
                                  <%foreach $imglist as $img%>
                                  <li><img src="<%$smarty.const.ACW_BASE_URL_DATA%><%$img.img_path%>" onclick="chang_img(this)"></li>
                                  <%/foreach%>
@@ -46,13 +41,7 @@
                               <h5>Thông tin sản phẩm</h5>
                               <!-- variations section  -->
                               <div class="variations mt15">
-                                 <!--<div class="row">
-                                    <div class="col-sm-12">
-                                       <select name="id" id="product-select-342736279" class="product-variants form-control hidden">
-                                          <option selected="selected" data-sku="" value="795366727">Default Title - $169.99 USD</option>
-                                       </select>
-                                    </div>
-                                 </div>-->
+                                 
                                  <input type="hidden" name="pro_id" value="<%$pro.pro_id%>">
                               </div>
                               <div class="desc_blk_bot clearfix">
@@ -71,20 +60,9 @@
                               <div class="rte" itemprop="description">
                                  <%$pro.content%>
                               </div>
-                              <!-- product variant sku, vendor --> 
-                              <!--<div class="prod_sku_vend">
-                                 <div class="variant-sku"></div>
-                                 <div class="product-vendor"><strong>Vendor: </strong> <a href="/collections/vendors?q=Asfalio" title="Asfalio">Asfalio</a></div>
-                                 <div id="variant-inventory"><span class="in-stock">In stock! Usually ships within 24 hours.</span></div>
-                              </div>-->
-                              <!-- end product variant sku, vendor --> 
-                              <!-- bottom variations section  -->
-                              <!-- bottom variations section end  -->
-                              <!-- product tags -->
-                              <!-- bottom cart section end -->
+                             
                               <div class="review_row clearfix">
-                                 <!--<span class="spr-badge" id="spr_badge_342736279" data-rating="0.0"><span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style="color: #fbcf00;"></i><i class="spr-icon spr-icon-star-empty" style="color: #fbcf00;"></i><i class="spr-icon spr-icon-star-empty" style="color: #fbcf00;"></i><i class="spr-icon spr-icon-star-empty" style="color: #fbcf00;"></i><i class="spr-icon spr-icon-star-empty" style="color: #fbcf00;"></i></span><span class="spr-badge-caption">No reviews</span>
-                                 </span>-->
+                                
                                  <div class="share">
                                     <div class="social-sharing">
                                        <ul>

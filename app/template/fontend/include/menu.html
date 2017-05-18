@@ -2,9 +2,75 @@
 	#header #nav .navbar-nav > li > a:hover{
 		color: #37bbec;
 	}
+	.ol{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/ol.png) no-repeat left center;
+	    height: 30px;
+	    line-height: 30px;
+	    padding-left: 20px;
+    }
+    .tuan{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/tuan.png) no-repeat left center;
+	    height: 30px;
+	    line-height: 30px;
+	    padding-left: 20px;
+    }
+    .thang{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/thang.png) no-repeat left center;
+	    height: 30px;
+	    line-height: 30px;
+	    padding-left: 20px;
+    }
+	.tong{
+		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/tong.png) no-repeat left center;
+	    height: 30px;
+	    line-height: 30px;
+	    padding-left: 20px;
+    }
 </style>
 <div id="header" data-section-id="header" data-section-type="header-section">
-   <div class="header_bot  enabled-sticky-menu sticky">
+   <div class="header_top">
+	   <div class="container">
+	      <div class="top_menu">
+	         <a  href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
+                     <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
+                     </a>                    
+	      </div>
+	      <!--<div class="hed_right">
+	         <ul>
+	            <li><a href="tel:800.555.5555"><span class="fa fa-phone"></span>800.555.5555</a></li>
+	         </ul>
+	     </div>-->
+	         <div class="social" style="float: right">
+                              <ul>                              	
+                                 
+                                 <li class="facebook">
+                                    <a href="https://facebook.com/" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>
+                                 </li>
+                                 <li class="google">
+                                    <a href="https://plus.google.com/" target="_blank" title="Pinterest"><span class="fa fa-google-plus"></span></a>
+                                 </li>
+                                 <li class="twitter">
+                                    <a href="https://twitter.com/" target="_blank" title="Twitter"><span class="fa fa-twitter"></span></a>
+                                 </li>
+                                 <li class="pinterest">
+                                    <a href="https://www.pinterest.com//" target="_blank" title="Pinterest"><span class="fa fa-pinterest"></span></a>
+                                 </li>
+                                 
+                                 <li class="instagram">
+                                    <a href="https://instagram.com/" target="_blank" title="Instagram"><span class="fa fa-instagram"></span></a>
+                                 </li>                                 
+                                 <li class="youtube">
+                                    <a href="https://www.youtube.com/user/" target="_blank" title="YouTube"><span class="fa fa-youtube"></span></a>
+                                 </li>
+                                 
+                              </ul>
+                           </div>
+	      
+	         
+	      
+	   </div>
+	</div>
+   <div class="header_bot  enabled-sticky-menu "> <!--sticky-->
       <div class="header_content">
          <div class="container">
             <div id="nav">
@@ -27,9 +93,9 @@
                         </a>
                      </div>-->
                      <!-- ./visible-ms visible-xs -->
-                     <a class="navbar-brand" href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
+                     <!--<a class="navbar-brand" href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
                      <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
-                     </a>
+                     </a>-->
                   </div>
                   <!-- code here -->
                   <%assign var='menus' value=Menu_model::get_menus()%>

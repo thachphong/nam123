@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0031)https://cooktime.myshopify.com/ -->
 <html lang="en" class="noIE">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,10 +12,10 @@
       <meta property="og:type" content="website">
       <meta property="og:title" content="<%$pro.pro_name%>">
       <meta property="og:url" content="<%$smarty.const.ACW_BASE_URL%>">
-      <meta property="og:site_name" content="Nấm Tấn Bửu">
+      <meta property="og:site_name" content="<%$pro.pro_name%>">
+      <meta property="og:image" content="<%$smarty.const.ACW_BASE_URL_DATA%><%$imglist[0]['img_path']%>">
       <meta name="twitter:site" content="@shopify">
-      <meta name="twitter:card" content="summary">
-      <link rel="canonical" href="<%$smarty.const.ACW_BASE_URL%>">
+      <meta name="twitter:card" content="summary">      
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/6082877/digital_wallets/dialog">
       <meta name="theme-color" content="#37bbec">
@@ -106,9 +105,9 @@
          </div>
          
          <div id="shopify-section-header" class="shopify-section">
-            <div class="promo-bar">
+            <!--<div class="promo-bar">
                <p>Save 10% storewide using coupon code SAVE</p>
-            </div>
+            </div>-->
             <%include 'include/menu.html'%>
             <!-- /header -->
             <style>

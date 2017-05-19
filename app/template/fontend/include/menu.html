@@ -26,21 +26,22 @@
 	    line-height: 30px;
 	    padding-left: 20px;
     }
+    
 </style>
 <div id="header" data-section-id="header" data-section-type="header-section">
-   <div class="header_top">
-	   <div class="container">
-	      <div class="top_menu">
+   <div class="header_top" style="    background: #243659;">
+	   <div class="container"> 
+	      <!--<div class="top_menu">
 	         <a  href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
                      <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
                      </a>                    
-	      </div>
+	      </div>-->
 	      <!--<div class="hed_right">
 	         <ul>
 	            <li><a href="tel:800.555.5555"><span class="fa fa-phone"></span>800.555.5555</a></li>
 	         </ul>
 	     </div>-->
-	         <div class="social" style="float: right">
+	         <div class="social" style="float: left">
                               <ul>                              	
                                  
                                  <li class="facebook">
@@ -65,12 +66,41 @@
                                  
                               </ul>
                            </div>
-	      
-	         
+                <div style="width:59%;display: inline-block;text-align: center; margin-top: 12px;color:#fff">
+                	<h5 style="color:#fff">Hotline: 0907.238.166</h5>
+                </div>
+            <div id="nav" style="width: 100px; float: right;">
+               <nav class="navbar">
+	      	<ul class="hidden-xs nav navbar-nav navbar-right" id="ul_cart">
+                     <li class="dropdown-grid no-open-arrow">
+                        <a  href="<%$smarty.const.ACW_BASE_URL%>cart" class="dropdown-toggle " >
+                        	<%assign var='carts' value=count(ACWSession::get("cart_info"))%>
+                           <div class="cart-icon"><span class="count <%if $carts==0%>hidden<%/if%>"><%$carts%></span><i class="fa fa-shopping-cart"></i></div>
+                        </a>                       
+                     </li>                     
+                     <li class="dropdown-grid no-open-arrow">
+                        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
+                        <div class="dropdown-grid-wrapper" role="menu">
+                           <div class="dropdown-menu fixed_menu col-sm-4 col-lg-3 animated fadeInDown pl-pr-15 animation-done">
+                              <form action="<%$smarty.const.ACW_BASE_URL%>danhmuc/tim" method="get" role="search">
+                                 <div class="menu_c search_menu">
+                                    <div class="search_box">
+                                       <input type="hidden" name="type" value="product">
+                                       <input type="search" name="txt" value="" class="txtbox" placeholder="Search" aria-label="Search">
+                                       <button class="btn btn-link" type="submit" value="Search"><span class="fa fa-search"></span></button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+	         </nav>
+	         </div>
 	      
 	   </div>
 	</div>
-   <div class="header_bot  enabled-sticky-menu "> <!--sticky-->
+   <div class="header_bot  enabled-sticky-menu " > <!--sticky-->
       <div class="header_content">
          <div class="container">
             <div id="nav">
@@ -93,13 +123,13 @@
                         </a>
                      </div>-->
                      <!-- ./visible-ms visible-xs -->
-                     <!--<a class="navbar-brand" href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
+                     <a class="navbar-brand" href="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>" itemprop="url">
                      <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/logo.png" alt="namtanbuu" itemprop="logo">
-                     </a>-->
+                     </a>
                   </div>
                   <!-- code here -->
                   <%assign var='menus' value=Menu_model::get_menus()%>
-                  <nav class="wsmenu clearfix multi-drop">
+                  <nav class="wsmenu clearfix multi-drop" style="float: right;margin-top:12px">
                      <ul class="mobile-sub wsmenu-list">
                      <%foreach $menus as $key=>$item%>                        
                         <%if $item.child_flg > 0%>
@@ -131,45 +161,13 @@
                      </ul>
                       
                   </nav>
-                  <ul class="hidden-xs nav navbar-nav navbar-right">
+                  <!--<ul class="hidden-xs nav navbar-nav navbar-right">
                      <li class="dropdown-grid no-open-arrow">
                         <a  href="<%$smarty.const.ACW_BASE_URL%>cart" class="dropdown-toggle " >
                         	<%assign var='carts' value=count(ACWSession::get("cart_info"))%>
                            <div class="cart-icon"><span class="count <%if $carts==0%>hidden<%/if%>"><%$carts%></span><i class="fa fa-shopping-cart"></i></div>
-                        </a>
-                        <!--<div class="dropdown-grid-wrapper hidden">
-                           <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-9 col-md-7 animation-done" role="menu">
-                              <div class="menu_c cart_menu">
-                                 <div class="menu_title clearfix">
-                                    <h4>Shopping Cart</h4>
-                                 </div>
-                                 <div class="cart_row">
-                                    <div class="empty-cart">Your cart is currently empty.</div>
-                                    <p><a href="javascript:void(0)" class="btn_c btn_close">Continue Shopping</a></p>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>-->
-                     </li>
-                     <!--<li class="dropdown-grid no-open-arrow">
-                        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><span class="icons"><i class="fa fa-user"></i></span></a>
-                        <div class="dropdown-grid-wrapper">
-                           <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-5 col-md-4 col-lg-3 animation-done" role="menu">
-                              <div class="menu_c acc_menu">
-                                 <div class="menu_title clearfix">
-                                    <h4>My Account</h4>
-                                 </div>
-                                 <div class="login_frm">
-                                    <p class="text-center">Welcome to FurnishTime!</p>
-                                    <div class="remember">
-                                       <a href="/account/login" class="signin_btn btn_c">Login</a>
-                                       <a href="/account/register" class="signin_btn btn_c">Create Account</a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </li>-->
+                        </a>                       
+                     </li>                     
                      <li class="dropdown-grid no-open-arrow">
                         <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
                         <div class="dropdown-grid-wrapper" role="menu">
@@ -186,7 +184,7 @@
                            </div>
                         </div>
                      </li>
-                  </ul>
+                  </ul>-->
                </nav>
             </div>
          </div>

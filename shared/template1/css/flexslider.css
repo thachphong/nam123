@@ -71,7 +71,7 @@
 }
 .home-slider .slides img {
 	/*height: auto;*/
-	max-height: 400px;
+	max-height: 450px;
 	width: 100%;
 	min-height:inherit !important;
 	margin: 0 auto!important;

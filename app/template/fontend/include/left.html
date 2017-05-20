@@ -1,18 +1,55 @@
+<style>
+.side_box_1 li{
+	border-bottom:1px solid rgba(27, 25, 25, 0.19);;
+	background: rgba(55, 187, 236, 0.22) !important;
+}
+.side_box_2 li{
+	border-bottom:1px solid rgba(27, 25, 25, 0.19);;
+	background: #fff !important;
+}
+.side_box_1 li a{
+	color: #000 !important;
+}
+.side_box_1 li a:hover,.side_box_2 li a:hover{    	
+	color: #37bbec !important;
+}
+.fa-chevron-right {
+    position: relative;
+}
+ 
+/*replace the content value with the
+corresponding value from the list below*/
+ 
+.fa-chevron-right:before {
+    content: "\f054";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+   /* color: #000;  */  
+    padding-right: 0.5em;
+    left: 0;
+}
+</style>
 <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8">
 				<div class="sidebar sidebar_1">
                      
                      
                      <div class="side_box side_box_1 red5">
                         <h5><a href="#" class="tgl_btn">Thông tin</a></h5>
-                        <ul class="tgl_c">                       
+                        <ul class="tgl_c">
                            <li>
-                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/hinh-anh-hoat-dong" title="">Hình ảnh hoạt động</a>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/thong-bao" title=""><span class="fa-chevron-right"></span>Thông báo</a>
+                           </li>                       
+                           <li>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/hinh-anh-hoat-dong" title=""><span class="fa-chevron-right"></span>Hình ảnh hoạt động</a>
                            </li>
                            <li>
-                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/giay-chung-nhan,-cong-bo-sp" title="">Giấy chứng nhận công bố SP</a>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/giay-chung-nhan,-cong-bo-sp" title=""><span class="fa-chevron-right"></span>Giấy chứng nhận công bố SP</a>
                            </li>
                            <li>
-                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/lien-he" title="">Liên hệ</a>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/lien-he" title=""><span class="fa-chevron-right"></span>Liên hệ</a>
                            </li>                           
                        
                         </ul>
@@ -25,7 +62,7 @@
                         <ul class="tgl_c">
                         <%foreach $ctglist as $item%>
                            <li>
-                              <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%>" title="<%$item.ctg_name%>"><%$item.ctg_name%></a>
+                              <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%>" title="<%$item.ctg_name%>"><span class="fa-chevron-right"></span><%$item.ctg_name%></a>
                            </li>                           
                         <%/foreach%>
                         </ul>

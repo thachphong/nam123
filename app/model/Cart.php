@@ -12,13 +12,17 @@ class Cart_model extends ACWModel
 	{		
 		$db = new Cart_model();
 		$cart = ACWSession::get("cart_info");
-		$products = $db->get_products($cart);
+		$products = array();
 		$total_amount = 0;
-		foreach($products as &$item){
-			$item['qty'] = $cart[$item['pro_id']];
-			$item['amount'] = $item['qty']*$item['price_new'];
-			$total_amount += $item['amount'];
+		if($cart != NULL){
+			$products = $db->get_products($cart);			
+			foreach($products as &$item){
+				$item['qty'] = $cart[$item['pro_id']];
+				$item['amount'] = $item['qty']*$item['price_new'];
+				$total_amount += $item['amount'];
+			}
 		}
+		
 		return ACWView::template('cart.html',array(
 			'carts' =>$products
 			,'total_amount'=>$total_amount

@@ -4075,7 +4075,7 @@ Footer
   color:#37bbec;
 }
 #footer .f_mid {
-  padding:45px 0 55px 0;
+  padding:35px 0 50px 0;
   border-top:1px solid #ecefef;
   box-shadow: 0px 3px 3px #d1d7d7;
   position:relative;
@@ -4090,7 +4090,7 @@ Footer
 }
 #footer .f_mid h4 {
   font-size:20px;
-  padding:0 0 22px 0;
+  padding:0 0 10px 0;
   color:#282727;
 }
 #footer .f_mid .desc {
@@ -4425,7 +4425,8 @@ RTE Content
 .rte p {
   font-size:14px;
   line-height:21px;
-  color:#898989;
+  /*color:#898989;*/
+  color:#000;
   margin-bottom:10px;
 }
 .rte a {

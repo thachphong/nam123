@@ -4,34 +4,34 @@
 	}
 	.ol{
 		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/ol.png) no-repeat left center;
-	    height: 28px;
-	    line-height: 28px;
+	    height: 25px;
+	    line-height: 25px;
 	    padding-left: 20px;
 	    color: #fff;
     }
     .tuan{
 		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/tuan.png) no-repeat left center;
-	    height: 28px;
-	    line-height: 28px;
+	    height: 25px;
+	    line-height: 25px;
 	    padding-left: 20px;
 	    color: #fff;
     }
     .thang{
 		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/thang.png) no-repeat left center;
-	    height: 28px;
-	    line-height: 28px;
+	    height: 25px;
+	    line-height: 25px;
 	    padding-left: 20px;
 	    color: #fff;
     }
 	.tong{
 		background: url(<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/tong.png) no-repeat left center;
-	    height: 28px;
-	    line-height: 28px;
+	    height: 25px;
+	    line-height: 25px;
 	    padding-left: 20px;
 	    color: #fff;
     }
     .footer_ul li{
-    	height: 28px;
+    	height: 25px;
 	    line-height: 30px;
 	    color: #fff;
     }
@@ -47,6 +47,55 @@
     .f_mid h4{
     	color: #fff !important;
     }
+    .ticker_con{
+    	width:70%;
+    	display: inline-block;
+    	text-align: center;    	
+    	overflow: hidden;
+    	padding-left:31px
+    }
+    .ticker-wrap {
+			/*position: fixed;
+			bottom: 0;*/
+			width: 100%;
+			overflow: hidden;
+			height: 4rem;
+			/*background-color: rgba(51, 51, 51, 0.5);*/
+			padding-left: 100%; // offsets items to begin
+		}
+
+		.ticker {
+			display: inline-block;
+			height: 4rem;
+			line-height: 4rem;
+			white-space: nowrap;
+			padding-right: 100%; // taken from container as display inline-block
+		}
+
+		.ticker__item {
+			display: inline-block;
+			padding: 0 2rem;
+			font-size: 2rem;
+			color: #fff101;
+			font-family: Tahoma,arial;
+		}
+		@keyframes ticker {
+			0% {
+				-webkit-transform: translate3d(0, 0, 0);
+						transform: translate3d(0, 0, 0);
+
+			}
+			100% {
+				-webkit-transform: translate3d(-970px, 0, 0);
+				        transform: translate3d(-970px, 0, 0);
+			}
+		}
+		.ticker {
+			animation-name: ticker;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+			animation-duration: 10s; // tweak based on number of items/desired speed
+		}
 </style>
 <div id="header" data-section-id="header" data-section-type="header-section">
    <div class="header_top" style="    background: #243659;">
@@ -86,10 +135,15 @@
                                  
                               </ul>
                            </div>
-                <div style="width:59%;display: inline-block;text-align: center; margin-top: 12px;color:#fff">
-                	<h5 style="color:#fff">Hotline: 0907.238.166</h5>
+                <div class="ticker_con">
+                	<div class="ticker-wrap">
+					    <div class="ticker">
+					        <div class="ticker__item">Hotline: 0907.238.166</div>
+					    </div>
+					</div>
+                	<!--<h5 style="color:#fff;font-size:18px;color:#fff101; ">Hotline: 0907.238.166</h5>-->
                 </div>
-            <div id="nav" style="width: 200px; float: right;">
+            <div id="nav" style="width: 80px; float: right;">
                <nav class="navbar">
 	      	<ul class="hidden-xs nav navbar-nav navbar-right" id="ul_cart">
                      <li class="dropdown-grid no-open-arrow">

@@ -467,4 +467,21 @@ class Menu_model extends ACWModel
 			}
 		}
 	}
+	public static function get_menus_left()
+	{
+		$db = new Menu_model();
+		$res =  $db->get_menu_byparent(29);
+		$menu = array();
+		$db->set_child($menu,$res,29);
+		return $menu;
+		
+	}
+	public function get_menu_byparent($parent_id){
+		$sql = "select t.menu_id,menu_level,parent_id,link,page_flg,(menu_name) menu_name
+				,(select count(*) from menu where  parent_id = t.menu_id) child_flg
+				from menu t
+				where del_flg = 0 
+				ORDER BY sort";
+		return $this->query($sql);
+	}
 }

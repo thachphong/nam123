@@ -1,14 +1,16 @@
 <style>
 .side_box_1 li{
-	border-bottom:1px solid rgba(27, 25, 25, 0.19);;
-	background: rgba(55, 187, 236, 0.22) !important;
+	border-bottom:1px solid rgba(27, 25, 25, 0.19);
+	background: rgba(55, 187, 236, 0.22) !important;	
 }
 .side_box_2 li{
-	border-bottom:1px solid rgba(27, 25, 25, 0.19);;
+	border-bottom:1px solid rgba(27, 25, 25, 0.19);
 	background: #fff !important;
 }
 .side_box_1 li a{
 	color: #000 !important;
+	text-decoration: none !important;
+	padding: 7px 25px;
 }
 .side_box_1 li a:hover,.side_box_2 li a:hover{    	
 	color: #37bbec !important;
@@ -31,6 +33,40 @@ corresponding value from the list below*/
     padding-right: 0.5em;
     left: 0;
 }
+.fa-caret-right {
+    content: "\f0da";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+   /* color: #000;  */  
+    padding-right: 0.5em;
+    left: 0;
+}
+
+.vertical_menu ul.submenu{
+	display: none;
+}
+ul.vertical_menu li{
+	padding: 0px !important;
+}
+ul.vertical_menu li a{
+	padding: 0px !important;
+	padding: 7px 25px !important;
+}
+ul.vertical_menu li ul.submenu{
+	background:#fff;
+	border-top:1px solid rgba(27, 25, 25, 0.19);	
+}
+ul.vertical_menu li ul.submenu li{
+	background: rgba(55, 187, 236, 0.14) !important;
+	padding-left: 15px !important;;
+}
+ul.vertical_menu li ul.submenu li a{
+	padding: 0px !important;
+	padding: 7px 25px !important;
+}
 </style>
 <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8">
 				<div class="sidebar sidebar_1">
@@ -38,19 +74,37 @@ corresponding value from the list below*/
                      
                      <div class="side_box side_box_1 red5">
                         <h5><a href="#" class="tgl_btn">Thông tin</a></h5>
-                        <ul class="tgl_c">
+                        <%assign var='menusleft' value=Menu_model::get_menus_left()%>
+                        
+                        <ul class="tgl_c vertical_menu">
+                        <%foreach $menusleft as $item%>
                            <li>
+                              <a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%></a>
+                              <%if $item.child_flg > 0%>
+                              <ul class="submenu">
+                              	<%foreach $item.child as $sub1%>
+                              		<li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%else%>#<%/if%>"><span class="fa-caret-right"></span><%$sub1.menu_name%></a></li>
+                              	<%/foreach%>
+                              </ul>
+                              <%/if%>
+                           </li>                           
+                        <%/foreach%>
+                           <!--<li>
                               <a href="<%$smarty.const.ACW_BASE_URL%>page/v/thong-bao" title=""><span class="fa-chevron-right"></span>Thông báo</a>
                            </li>                       
                            <li>
-                              <a href="<%$smarty.const.ACW_BASE_URL%>page/v/hinh-anh-hoat-dong" title=""><span class="fa-chevron-right"></span>Hình ảnh hoạt động</a>
+                              <a href="#" title="" class="item_parent_menu"><span class="fa-chevron-right"></span>Hình ảnh hoạt động</a>
+                              <ul class="submenu">
+                              	<li><a><span class="fa-caret-right"></span>sssssssssssss</a></li>
+                              	<li><a>ssssssssss</a></li>                            
+                              </ul>
                            </li>
                            <li>
                               <a href="<%$smarty.const.ACW_BASE_URL%>page/v/giay-chung-nhan,-cong-bo-sp" title=""><span class="fa-chevron-right"></span>Giấy chứng nhận công bố SP</a>
                            </li>
                            <li>
                               <a href="<%$smarty.const.ACW_BASE_URL%>page/v/lien-he" title=""><span class="fa-chevron-right"></span>Liên hệ</a>
-                           </li>                           
+                           </li>-->                           
                        
                         </ul>
                  </div>	
@@ -59,7 +113,7 @@ corresponding value from the list below*/
                      
                      <div class="side_box side_box_1 red5">
                         <h5><a href="#" class="tgl_btn">Sản phẩm</a></h5>
-                        <ul class="tgl_c">
+                        <ul class="tgl_c vertical_menu">
                         <%foreach $ctglist as $item%>
                            <li>
                               <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%>" title="<%$item.ctg_name%>"><span class="fa-chevron-right"></span><%$item.ctg_name%></a>
@@ -133,3 +187,29 @@ corresponding value from the list below*/
                      </div>
                   </div>
                </div>
+<script>
+jQuery(document).ready(function () {
+	$('.item_parent_menu').click(function(){
+		//alert('aa');
+		var child = $(this).parent().find('ul')[0];
+		if($(child).is(':hidden')){
+			$(child).show();
+		}else{
+			$(child).hide();
+		}
+	});
+    /*clickNav();
+
+    function clickNav() {
+        	$('.vertical_menu ul .submenu').parent().click(function (e) {
+            if ($(this).children('.submenu').is(':hidden')) {
+                $(this).children('.submenu').show();
+            } else {
+                $(this).children('.submenu').hide();
+            }
+            
+            e.preventDefault();
+        });
+    }*/
+});
+</script>

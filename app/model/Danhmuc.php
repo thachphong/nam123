@@ -88,7 +88,7 @@ class Danhmuc_model extends ACWModel
 		return $this->query($sql);
 	}
 	public function get_danhmuc_info($ctg_no){
-		$sql ="select ctg_no,ctg_name from category 
+		$sql ="select ctg_no,upper(ctg_name) ctg_name from category 
 				where del_flg = 0 and ctg_no =:ctg_no
 				";
 		$res = $this->query($sql,array('ctg_no'=>$ctg_no));

@@ -1460,6 +1460,7 @@ Content
 
 #content .main_box .desc h5 a {
   color:#37bbec;
+  font-family: Tahoma,Arial,Times New Roman;
 }
 
 #content .main_box .desc h5 a:hover {
@@ -4089,9 +4090,10 @@ Footer
   color:#2a6496;
 }
 #footer .f_mid h4 {
-  font-size:20px;
+  font-size:14px;
   padding:0 0 10px 0;
   color:#282727;
+  font-family: Tahoma,Arial,Times New Roman;
 }
 #footer .f_mid .desc {
   font-size:14px;

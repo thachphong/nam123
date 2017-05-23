@@ -82,7 +82,7 @@ ul.vertical_menu li ul.submenu li a{
                         <ul class="tgl_c vertical_menu">
                         <%foreach $menusleft as $item%>
                            <li>
-                              <a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%></a>
+                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%></a>
                               <%if $item.child_flg > 0%>
                               <ul class="submenu">
                               	<%foreach $item.child as $sub1%>
@@ -112,14 +112,21 @@ ul.vertical_menu li ul.submenu li a{
                         </ul>
                  </div>	
                   <div class="sidebar sidebar_1">
-                     <%assign var='ctglist' value=Danhmuc_model::get_danhmucs()%>
+                     <%assign var='ctglist' value=Menu_model::get_menus_sp()%>
                      
                      <div class="side_box side_box_1 red5">
                         <h5><a href="#" class="tgl_btn">Sản phẩm</a></h5>
                         <ul class="tgl_c vertical_menu">
                         <%foreach $ctglist as $item%>
                            <li>
-                              <a href="<%$smarty.const.ACW_BASE_URL%>danhmuc/ds/<%$item.ctg_no%>" title="<%$item.ctg_name%>"><span class="fa-chevron-right"></span><%$item.ctg_name%></a>
+                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%></a>
+                              <%if $item.child_flg > 0%>
+                              <ul class="submenu">
+                              	<%foreach $item.child as $sub1%>
+                              		<li><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%else%>#<%/if%>"><span class="fa-caret-right"></span><%$sub1.menu_name%></a></li>
+                              	<%/foreach%>
+                              </ul>
+                              <%/if%>
                            </li>                           
                         <%/foreach%>
                         </ul>

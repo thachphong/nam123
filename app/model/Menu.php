@@ -484,4 +484,13 @@ class Menu_model extends ACWModel
 				ORDER BY sort";
 		return $this->query($sql);
 	}
+	public static function get_menus_sp()
+	{
+		$db = new Menu_model();
+		$res =  $db->get_menu_byparent(30);
+		$menu = array();
+		$db->set_child($menu,$res,30);
+		return $menu;
+		
+	}
 }

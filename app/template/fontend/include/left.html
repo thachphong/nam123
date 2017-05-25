@@ -46,6 +46,26 @@ corresponding value from the list below*/
     padding-right: 0.5em;
     left: 0;
 }
+.fa-plus-circle{
+	content: "\f055";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    padding-right: 0.5em;
+    /*left: 0;*/
+    float: right;
+}
+.fa-minus-circle{
+	content: "\f056";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    padding-right: 0.5em;
+    /*left: 0;*/
+    float: right;
+}
 
 .vertical_menu ul.submenu{
 	display: none;
@@ -56,7 +76,7 @@ ul.vertical_menu li{
 ul.vertical_menu li a{
 	padding: 0px !important;
 	padding: 7px 25px !important;
-	
+	width: 100%;
 }
 ul.vertical_menu li ul.submenu{
 	background:#fff;
@@ -82,7 +102,7 @@ ul.vertical_menu li ul.submenu li a{
                         <ul class="tgl_c vertical_menu">
                         <%foreach $menusleft as $item%>
                            <li>
-                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%></a>
+                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%><%if $item.child_flg > 0%><span class="show_icon  fa-plus-circle"></span><%/if%></a>
                               <%if $item.child_flg > 0%>
                               <ul class="submenu">
                               	<%foreach $item.child as $sub1%>
@@ -119,7 +139,7 @@ ul.vertical_menu li ul.submenu li a{
                         <ul class="tgl_c vertical_menu">
                         <%foreach $ctglist as $item%>
                            <li>
-                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%></a>
+                              <a href="<%if strlen($item.link)>0%><%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%else%>#<%/if%><%else%>#<%/if%>" title="<%$item.menu_name%>" <%if $item.child_flg > 0%>class="item_parent_menu"<%/if%>><span class="fa-chevron-right"></span><%$item.menu_name%><%if $item.child_flg > 0%><span class="show_icon  fa-plus-circle"></span><%/if%></a>
                               <%if $item.child_flg > 0%>
                               <ul class="submenu">
                               	<%foreach $item.child as $sub1%>
@@ -201,12 +221,19 @@ ul.vertical_menu li ul.submenu li a{
 jQuery(document).ready(function () {
 	$('.item_parent_menu').click(function(){
 		//alert('aa');
-		var child = $(this).parent().find('ul')[0];
+		var child = $(this).parent().find('ul')[0];	
+		var icon = $(this).parent().find('.show_icon')[0];	
 		if($(child).is(':hidden')){
 			$(child).show();
+			$(icon).removeClass('fa-plus-circle');
+			$(icon).addClass('fa-minus-circle');
 		}else{
 			$(child).hide();
+			$(icon).addClass('fa-plus-circle');
+			$(icon).removeClass('fa-minus-circle');
 		}
+				
+		
 	});
     /*clickNav();
 

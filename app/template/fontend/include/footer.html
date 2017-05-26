@@ -32,10 +32,12 @@
                               <p>Hôm nay:20</p>
                               <p>Trong tháng: 100</p>
                               <p>Tổng truy cập: 1000</p>-->
-                              <div class="ol"><span class="ol_text">Đang online</span><span>:</span><span class="ol_num">1</span></div>
-							  <div class="tuan"><span class="ol_text">Hôm nay</span><span>:</span><span class="ol_num">17</span></div>
-							  <div class="thang"><span class="ol_text">Trong tháng</span><span>:</span><span class="ol_num">40</span></div>
-							  <div class="tong"><span class="ol_text">Tổng truy cập</span><span>:</span><span class="ol_num">100</span></div>
+                              <%assign var='ol' value=Online_model::get_online()%>
+                              
+                              <div class="ol"><span class="ol_text">Đang online</span><span>:</span><span class="ol_num"><%$ol.current_ol%></span></div>
+							  <div class="tuan"><span class="ol_text">Hôm nay</span><span>:</span><span class="ol_num"><%$ol.day_ol%></span></div>
+							  <div class="thang"><span class="ol_text">Trong tháng</span><span>:</span><span class="ol_num"><%$ol.month_ol%></span></div>
+							  <div class="tong"><span class="ol_text">Tổng truy cập</span><span>:</span><span class="ol_num"><%$ol.total_ol%></span></div>
                            </div>
                         </div>
                      </div>

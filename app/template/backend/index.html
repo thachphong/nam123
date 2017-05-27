@@ -10,9 +10,11 @@
     <title>Admin! | </title>
 
     <%include 'include/header.html'%>
+   
   </head>
   <%assign var='login_info' value=ACWSession::get('user_info')%>
   <body class="nav-md">
+  	<%include 'include/pho_ajax.html'%>
     <div class="container body">
       <div class="main_container">
         <%include 'include/left.html'%>
@@ -24,23 +26,32 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" style="min-height: 774px;">
-          
+        <div class="right_col" role="main" style="min-height: 600px">
+          <div class="">            
+            <div class="clearfix"></div>
+
+            <div class="row">              
+			  <div class="col-md-12 col-sm-12 col-xs-12">               
+                  </div>
+                </div>
+              </div>
+            	
+            </div>
+          </div>
+        
         </div>
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
+        <%include 'include/footer.html'%>
         <!-- /footer content -->
+        
       </div>
     </div>
-
-   
 	
-  </body>
+
+     
+    
+	
+</body>
 </html>

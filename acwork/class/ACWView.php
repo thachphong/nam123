@@ -52,7 +52,10 @@ class ACWView
 		foreach (static::$smarty_var as $key => $value) {
 			$smarty->assign($key, $value);
 		}
-
+		$define_val =get_define_all();
+		foreach ($define_val as $key => $value) {
+			$smarty->assign($key, $value);
+		}
 		// パラメタ設定
 		if (is_null($param) == false) {
 			// クラスのオブジェクトを獲得

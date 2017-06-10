@@ -1,9 +1,5 @@
 <?php
 
-if(defined('ACW_PROJECT') == FALSE)
-{
-	define('ACW_PROJECT', 'qlfile'); // xxx
-}
 // Core
 require ACW_SYSTEM_DIR . '/class/ACWCore.php';
 // Controller
@@ -63,4 +59,24 @@ require ACW_USER_CONFIG_DIR . '/config.php';
 require ACW_USER_CONFIG_DIR . '/define.php';
 
 require ACW_USER_CONFIG_DIR . '/db.php';
+
+require ACW_APP_DIR . '/model/define.php';
+
+function get_define_all(){
+	$model = new Define_model();
+	$res = $model->get_define_all();
+	$param= array();
+	foreach($res as $row){
+		if($row['define_key']==DEFINE_KEY_EMAIL){
+			//$email_send = $row['define_val'];
+			$param['email_send'] = $row['define_val'];
+		}else if($row['define_key']==DEFINE_KEY_FACEBOOK_PAGE){
+			$param['facebook_page'] = $row['define_val'];			
+		}else if($row['define_key']==DEFINE_KEY_LOGO_PATH){
+			//$logo_main = $row['define_val'];
+			$param['logo_main'] = $row['define_val'];
+		}
+	}
+	return $param;
+}
 

@@ -177,7 +177,9 @@ class Cart_model extends ACWModel
 		$body_tmp = $this->get_body($param,$cart);		
 		$replacements['HEADER'] = '<h2><strong>Thông tin đặt hàng </strong></h2>';
 		$replacements['BODY'] = $body_tmp;
-		$mail_to[]['mail_address']= PHPMAIL_ADMIN_EMAIL;	
+		$db = new Define_model();
+		$data = $db->get_define(DEFINE_KEY_EMAIL);
+		$mail_to[]['mail_address']= $data['define_val'];	
 			
 		$email->AddListAddress($mail_to);
                 

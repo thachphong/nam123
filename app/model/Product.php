@@ -161,7 +161,7 @@ class Product_model extends ACWModel
 		$sql="delete from  product_img where img_thumb= :img_thumb" ;
 		$file_lb = new FilePHPDebug_lib();
 		foreach($img_list as $item){
-			$img_path = str_replace(ACW_BASE_URL,"",$item);
+			$img_path = str_replace(ACW_BASE_URL_DATA,"",$item);
 			$this->execute($sql,array('img_thumb'=>$img_path));
 			if(strlen($img_path) > 0){
 				$file_lb->DeleteFile(DATA_MAIN_PATH.'/'.$img_path);

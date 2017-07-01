@@ -162,11 +162,11 @@
                       	<div class="col-md-8 col-sm-8 col-xs-12">
                       		<table class="list_file" id="list_file">
                       			<%foreach $img_list as $img%>                      			
-                      			<tr>                      				
-                      				<td><img class="img-rounded" height="60" src="<%$smarty.const.ACW_BASE_URL_DATA%><%$img.img_path%>">                      					
+                      			<tr id="tr_<%$img.pro_img_id%>">                      				
+                      				<td><img class="img-rounded" id="img_<%$img.pro_img_id%>" height="60" src="<%$smarty.const.ACW_BASE_URL_DATA%><%$img.img_thumb%>">                      					
                       				</td>
                       				<td>
-                      					<a class="btn btn-danger btn-xs" id="del_add_<%$img.pro_img_id%>" type="button">Xóa hình</a>
+                      					<a class="btn btn-danger btn-xs btn_del_img" id="del_<%$img.pro_img_id%>" type="button">Xóa hình</a>
                       				</td>
                       				<td><label><input type="radio" name="chk" value="0" id="radio_<%$img.pro_img_id%>" <%if $img.avata_flg ==1%>checked="true"<%/if%> >làm ảnh đại diện</label>                      					
                       				</td>
